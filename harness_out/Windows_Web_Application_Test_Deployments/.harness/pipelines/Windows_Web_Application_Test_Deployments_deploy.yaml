@@ -3,16 +3,17 @@ pipeline:
   identifier: Windows_Web_Application_Test_Deployments_deploy
   orgIdentifier: my_org
   projectIdentifier: my_project
-  tags: {}
+  tags:
+    bsa: Cloud Operations
   stages:
   - stage:
-      name: Deploy PH37507_test
-      identifier: Deploy_PH37507_test
+      name: Deploy IIS_Web_Package
+      identifier: Deploy_IIS_Web_Package
       type: Deployment
       spec:
         deploymentType: WinRm
         service:
-          serviceRef: Windows_Web_Application_Test_Deployments_PH37507_test
+          serviceRef: Windows_Web_Application_Test_Deployments_IIS_Web_Package
         environment:
           environmentRef: <+input>
           deployToAll: true
@@ -38,13 +39,13 @@ pipeline:
           action:
             type: StageRollback
   - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_COM
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_COM
+      name: Deploy Restart_AppPool
+      identifier: Deploy_Restart_AppPool
       type: Deployment
       spec:
         deploymentType: WinRm
         service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_COM
+          serviceRef: Windows_Web_Application_Test_Deployments_Restart_AppPool
         environment:
           environmentRef: <+input>
           deployToAll: true
@@ -70,237 +71,13 @@ pipeline:
           action:
             type: StageRollback
   - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_App
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_App
+      name: Deploy Windows_Service_Dummy
+      identifier: Deploy_Windows_Service_Dummy
       type: Deployment
       spec:
         deploymentType: WinRm
         service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_App
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_Proxy
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_Proxy
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_COM_MSI_Test_Proxy
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_IIS_App_Restart_Test
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_IIS_App_Restart_Test
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_IIS_App_Restart_Test
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_IIS_Site_Restart_Test
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_IIS_Site_Restart_Test
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_IIS_Site_Restart_Test
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_Windows_Application_Batch_Test
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_Windows_Application_Batch_Test
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_Windows_Application_Batch_Test
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_Windows_Config_Test
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_Windows_Config_Test
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_Windows_Config_Test
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_UCD_Windows_Web_App_Test
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_UCD_Windows_Web_App_Test
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_UCD_Windows_Web_App_Test
-        environment:
-          environmentRef: <+input>
-          deployToAll: true
-          infrastructureDefinitions:
-          - identifier: input
-        execution:
-          steps:
-          - step:
-              name: Deploy
-              identifier: Deploy
-              type: ShellScript
-              spec:
-                shell: Bash
-                onDelegate: true
-                source:
-                  type: Inline
-                  spec:
-                    script: 'echo TODO: implement deployment'
-      failureStrategies:
-      - onFailure:
-          errors:
-          - AllErrors
-          action:
-            type: StageRollback
-  - stage:
-      name: Deploy Windows_Web_Application_Test_Deployments_Windows_Service
-      identifier: Deploy_Windows_Web_Application_Test_Deployments_Windows_Service
-      type: Deployment
-      spec:
-        deploymentType: WinRm
-        service:
-          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Web_Application_Test_Deployments_Windows_Service
+          serviceRef: Windows_Web_Application_Test_Deployments_Windows_Service_Dummy
         environment:
           environmentRef: <+input>
           deployToAll: true
