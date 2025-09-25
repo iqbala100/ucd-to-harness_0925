@@ -13,7 +13,7 @@ pipeline:
       identifier: Deploy_customerportal_api
       type: Deployment
       spec:
-        deploymentType: Custom
+        deploymentType: AWS_SAM
         service:
           serviceRef: CustomerPortal_customerportal_api
         environment:
@@ -45,7 +45,7 @@ pipeline:
       identifier: Deploy_customerportal_batch
       type: Deployment
       spec:
-        deploymentType: Custom
+        deploymentType: AWS_SAM
         service:
           serviceRef: CustomerPortal_customerportal_batch
         environment:
@@ -77,7 +77,7 @@ pipeline:
       identifier: Deploy_customerportal_web
       type: Deployment
       spec:
-        deploymentType: Custom
+        deploymentType: AWS_SAM
         service:
           serviceRef: CustomerPortal_customerportal_web
         environment:
