@@ -1,8 +1,8 @@
 pipeline:
   name: CustomerPortal deploy
   identifier: CustomerPortal_deploy
-  orgIdentifier: my_org
-  projectIdentifier: my_project
+  orgIdentifier: default
+  projectIdentifier: UCDharnessimportyaml
   tags:
     bsa: Customer Solutions
     language: java

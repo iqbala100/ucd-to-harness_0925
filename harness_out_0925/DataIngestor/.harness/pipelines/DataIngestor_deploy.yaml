@@ -1,8 +1,8 @@
 pipeline:
   name: DataIngestor deploy
   identifier: DataIngestor_deploy
-  orgIdentifier: my_org
-  projectIdentifier: my_project
+  orgIdentifier: default
+  projectIdentifier: UCDharnessimportyaml
   tags:
     language: python
   stages:
