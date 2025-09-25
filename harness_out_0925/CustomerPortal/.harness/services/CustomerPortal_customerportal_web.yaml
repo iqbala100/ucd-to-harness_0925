@@ -6,8 +6,8 @@ service:
     language: java
     build: gradle
   serviceDefinition:
-    type: Custom
+    type: AWS_SAM
     spec:
       variables: []
   orgIdentifier: default
-  projectIdentifier: UCDharnessimportyaml
+  projectIdentifier: harnessimportv
