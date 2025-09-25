@@ -10,4 +10,4 @@ service:
     spec:
       variables: []
   orgIdentifier: default
-  projectIdentifier: UCDharnessimportyaml
+  projectIdentifier: harnessimportv
