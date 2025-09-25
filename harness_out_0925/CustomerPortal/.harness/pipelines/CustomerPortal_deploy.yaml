@@ -2,7 +2,7 @@ pipeline:
   name: CustomerPortal deploy
   identifier: CustomerPortal_deploy
   orgIdentifier: default
-  projectIdentifier: ucdharness0925
+  projectIdentifier: harnessimportv
   tags:
     bsa: Customer Solutions
     language: java
